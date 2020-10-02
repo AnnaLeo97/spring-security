@@ -9,14 +9,22 @@
     <h2>New User</h2>
 
     <form action="#" th:action="@{/new}" th:object = "${user}" method="post">
+
         <label for="username">Username</label>
         <input type="text" name = "username" id = "username" th:field = "*{username}">
 
         <label for="username">Password</label>
         <input type="text" name = "password" id = "password" th:field = "*{password}">
 
+        <label>Roles:</label>
+        <select id="multiple-roles" name = "roles" multiple="multiple">
+            <option th:each="role: ${allRoles}"
+                    th:value="${role}"
+                    th:text="${role}">
+        </select>
         <input type="submit" value="Add User">
     </form>
+
 </div>
 <form th:action="@{/logout}" method="POST">
     <input type="submit" value="Logout"/>

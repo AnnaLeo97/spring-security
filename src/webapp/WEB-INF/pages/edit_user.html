@@ -15,11 +15,27 @@
         <label for="name">Username</label>
         <input type="text" name = "name" id = "name" th:field = "*{username}">
 
-        <label for="name">Password</label>
+        <label for="email">Password</label>
         <input type="text" name = "email" id = "email" th:field = "*{password}">
 
+        <label for="multiple-roles">Roles:</label>
+        <select id="multiple-roles" name="roles" multiple size="2">
+            <option th:each="role: ${allRoles}"
+                    th:value="${role.getName()}"
+                    th:text="${role.getName()}">
+
+            </option>
+        </select>
         <input type="submit" value="Add User">
+
+
     </form>
+<!--    <form action="#" th:action="@{/edit}" th:each = "role : ${role}" method="post">-->
+<!--    <label for="name">Roles</label>-->
+<!--    <input type="text" name = "roles" id = "roles" th:field = "${role}">-->
+
+<!--    <input type="submit" value="Add Role">-->
+<!--    </form>-->
 </div>
 <form th:action="@{/logout}" method="POST">
     <input type="submit" value="Logout"/>
